@@ -1,3 +1,12 @@
+    """
+    This file contains the code for emotion detection from audio.
+    The emotion detection is done using the pretrained model from speechbrain.
+    The model is trained on the IEMOCAP dataset.
+    The model is a wav2vec2 model with a classifier on top of it.
+    The model is trained on the 4 emotions: happy, sad, angry and neutral.
+    The output of the model is the probability of each emotion.
+    """
+
 from moviepy.editor import VideoFileClip
 import numpy as np
 import math

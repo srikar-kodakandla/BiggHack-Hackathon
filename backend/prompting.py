@@ -1,3 +1,12 @@
+"""This is the main file
+
+This file takes uses the other modules like check_video_quality.py, emotion_video_detection.py, 
+emotion_detection_audio.py,image_to_text.py to analyze the video and audio and then we use those features and 
+prompt to the ChatGPT to get analytics
+ 
+"""
+
+
 import re
 import pandas as pd
 import numpy as np
@@ -5,8 +14,8 @@ import openai
 from tqdm.auto import tqdm
 import openai
 
-agent_video_path='input/agent.mp4'
-customer_video_path='input/customer.mp4'
+agent_video_path='input/agent.mp4'   # Here give the agent video path
+customer_video_path='input/customer.mp4' # Here give the customer video path
 
 
 class ChatGPT:  
@@ -28,10 +37,11 @@ class ChatGPT:
         self.conversation_history.append({"role": "assistant", "content": assistant_reply})
         return assistant_reply
 
-api_key="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"
+api_key="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" #Give the OpenAI API key here
 
 chat = ChatGPT(api_key)
 
+# We got this conversations from video to text module
 conversations="""00:00	(Speaker A)	Hello Alam, welcome to Credit the Video KYC process for your personal loan application. So can you  
      	           	please confirm your full name and date of birth?                                                    
 00:13	(Speaker B)	Hi ma'am, my name is Alam is on 21st November 1990.                                                 
@@ -58,6 +68,7 @@ conversations="""00:00	(Speaker A)	Hello Alam, welcome to Credit the Video KYC p
 
 script ="Did the agent collect all necessary KYC information from the customer, including their full name, date of birth, government issued ID, current residential address, occupation, monthly income, employment details, and existing loans? "
 
+#These are the different analytics we are going to get from the ChatGPT
 questions = {
     "Call_Quality": {
         "Reason_for_Call_Completion": "If the call did not complete, please explain why?.",
@@ -138,7 +149,10 @@ questions = {
 }
 
 
-
+# This function takes the above questions and converts them into a good prompt for ChatGPT
+# This function adds the features that we got from the following modules : 
+# check_video_quality.py, emotion_video_detection.py, emotion_detection_audio.py,image_to_text.py
+# and it prompts to the ChatGPT with all the featuers, conversation and  the questions 
 def questions_to_prompt(questions, image_description_agent,image_description_customer, analytics):
     prompt = ""
     i = 1
@@ -182,7 +196,7 @@ def round_values(d):
             round_values(v)
     return d
 
-
+#  we add this analytics information in the final prompt that we are going to give to the ChatGPT
 analytics_prompt = f"""I am giving you the anylitics of the image during the conversation use this information also to answer the questions:
 The customer video is divided in to 10 chunks where each chunk i calculated the number of people in the video It is as follows {list(emotions_video_customer['people_count'].values())
 } In the same way agent video is divided in to 10 chunks where each chunk i calculated the number of people in the video It is as follows {list(emotions_video_agent['people_count'].values())}
@@ -208,6 +222,7 @@ count=0
 
 for category in tqdm(questions.keys()):
     print(category)
+    #  here we are asking ChatGPT the analytics by giving all the features that we derived
     ask_prompt = questions_to_prompt({category:questions[category]}, image_summary_customer, image_summary_agent, analytics_prompt)
     chat = ChatGPT(api_key)
     output=chat.ask(ask_prompt)
@@ -226,7 +241,7 @@ df.columns.name = None
 df.to_csv('Final_output.csv')   
 
 
-
+################################## PLAYGROUND FOR MORE EXPERMENTATION ##################################################################
 ###############################################################################################################
 ###############################################################################################################
 ###############################################################################################################
@@ -234,7 +249,7 @@ df.to_csv('Final_output.csv')
 ###############################################################################################################
 ###############################################################################################################
 
-####################This is the code for the chatbot###########################################################
+#################### This is the code for the chatbot ###########################################################
 #################### Ask any question which is related to  the conversation between agent and customer #########
 
 def chatbot(question, image_description_agent,image_description_customer, analytics):
@@ -250,7 +265,7 @@ def chatbot(question, image_description_agent,image_description_customer, analyt
     return answer
 
 if __name__ == "__main__":
-
+    # These are the example questions that you can ask the it
     your_question=""" What is the color of the shirt that the person wore in the video?"""
     your_question= """what is the customer gender? """
     your_question= """what is the customer age? and why did you gave that age ?  """

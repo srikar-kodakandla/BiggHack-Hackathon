@@ -1,3 +1,13 @@
+"""
+This file is used to generate the summary of the given image
+This is done by using the pretrained model from the huggingface library called vit-gpt2-image-captioning
+The model is used to generate the text from the image
+The model is a vision encoder decoder model
+The model is trained to generate the caption for the image
+
+"""
+
+
 from transformers import VisionEncoderDecoderModel, ViTImageProcessor, AutoTokenizer
 import torch
 from PIL import Image

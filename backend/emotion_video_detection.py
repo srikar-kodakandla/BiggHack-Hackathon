@@ -1,6 +1,16 @@
+    """
+This file is used to detect the emotions in the video
+The emotions are detected by using the FER library
+The video is divided in to 10 chunks 
+The emotions are detected for every chunk and the dominant emotion is taken for every chunk
+The emotions are plotted for the whole video and for each chunk of the video and saved in 'data' directory
+The video input is first converted to frames and then decreased it's quality to 480x360 for faster processing
+
+
+    """
+
 import cv2
 import os
-import cv2
 from fer import Video
 from fer import FER
 import os

@@ -1,3 +1,13 @@
+"""
+
+This file is used to check the quality of the video and audio quality
+The video quality is checked by using the variance of the laplacian of the image
+The audio quality is checked by using the zero crossing rate of the audio
+The video quality is normalized between 0 and 1
+The audio quality is normalized between 0 and 1
+
+"""
+
 import cv2
 import numpy as np
 import librosa
