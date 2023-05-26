@@ -1,0 +1,93 @@
+Category of the Question,short_summary
+Short_Summary,"- KYC agent welcomes the customer and asks for their name and date of birth
+- The customer provides their name and date of birth and is asked to show a government-issued ID document
+- The customer confirms their current residential address and contact details
+- The customer provides their occupation and monthly income
+- The customer has not declared bankruptcy or had any outstanding debt in the past and has not been convicted of any financial crimes or frauds
+- The customer provides their employment details including company name and designation
+- The customer provides details of their previous employment including job title, length of employment, and monthly salary
+- The customer has no existing loans or debts
+- The customer explains the purpose of the loan they are applying for
+- The conversation ends with the KYC agent thanking the customer."
+Call_Quality,"{
+  ""Reason_for_Call_Completion"": ""The call completed successfully."",
+  ""Call_Completion"": ""Yes"",
+  ""Reason_for_Call_Quality_Rating"": ""The call quality was good with clear audio and video."",
+  ""Call_Quality_Rating"": 8
+}"
+Agent_Performance,"{
+    ""Agent_Adherence_to_Script"": ""Yes"",
+    ""Reason_for_Agent_Adherence"": """",
+    ""Agent_Empathy_and_Professionalism"": ""Yes"",
+    ""Agent_Understanding_of_Customer"": ""Yes"",
+    ""Agent_Rating"": 8,
+    ""Reason_for_Agent_Rating"": ""The agent collected all necessary KYC information and demonstrated empathy and professionalism. However, there were some moments where the agent seemed a bit distracted or disengaged.""
+}"
+Customer_Behavior,"{
+  ""Reason_for_Customer_Cooperation"": """",
+  ""Customer_Cooperation"": ""Yes"",
+  ""Reason_for_Customer_Understanding"": """",
+  ""Customer_Understanding"": ""Yes"",
+  ""Customer_Rating"": 8,
+  ""Reason_for_Customer_Rating"": ""The customer was cooperative and provided all the necessary information. However, there were a few instances where the customer seemed unsure about the questions being asked.""
+}"
+Third_Party_Interference,"{
+  ""Reason_for_Third_Party_Interference"": null,
+  ""Third_Party_Presence"": ""No""
+}"
+Conversation_Analysis,"{
+    ""Reason_for_Conversation_Flow"": ""The conversation flowed naturally and logically without any abrupt jumps between topics."",
+    ""Conversation_Flow"": ""Yes"",
+    ""Reason_for_Conversation_Frustration"": ""There was no indication of frustration from either the agent or the customer."",
+    ""Conversation_Frustration"": ""No""
+}"
+Security_Checks,"{
+  ""Reason_for_liveness_Check"": ""No liveness check was conducted"",
+  ""liveness_Check"": ""No"",
+  ""Reason_for_Random_Number_Security_Check"": ""No random number security check was conducted"",
+  ""Random_Number_Security_Check"": ""No""
+}"
+Document_Verification,"{
+  ""Reason_for_Document_Verification"": ""N/A"",
+  ""Document_Verification"": ""Yes""
+}
+
+The agent properly verified all necessary documents during the call and there was no reason provided for document verification failure."
+Timestamp_Analysis,"{
+    ""Reason_for_Call_Duration"": ""The call duration was appropriate for the content of the conversation."",
+    ""Duration_of_Call"": ""Yes"",
+    ""Reason_for_Long_Pauses"": ""There were no long pauses in the conversation."",
+    ""Long_Pauses"": ""No"",
+    ""Reason_for_Speed"": ""The speed of the conversation was appropriate."",
+    ""Speed_of_Conversation"": ""Yes""
+}"
+Image_Context_Changes,"{
+  ""Image_Context_Changes"": ""No"",
+  ""Reason_for_Context_Changes"": """"
+}
+
+There were no significant changes in the environment or context during the conversation, as indicated by the consistent image descriptions provided for both the agent and customer."
+Non_Verbal_Cues,"{
+    ""Non_Verbal_Cues"": ""No"",
+    ""Reason_for_Non_Verbal_Cues"": """"
+}
+
+There were no non-verbal cues mentioned in the image descriptions that impacted the conversation."
+Third_Party_Presence_Image,"{
+  ""Third_Party_Presence_Image"": ""No"",
+  ""Reason_for_Third_Party_Presence_Image"": """"
+}"
+Technical_Issues_Image,"{
+    ""Technical_Issues_Image"": ""No"",
+    ""Reason_for_Technical_Issues_Image"": """"
+}"
+Distractions_Image,"{
+  ""Distractions_Image"": ""No"",
+  ""Reason_for_Distractions_Image"": """"
+}
+
+There were no distractions observed in the image descriptions provided for both the agent and the customer during the KYC verification conversation."
+Image_Context_Contribution,"{
+  ""Image_Context_Contribution"": ""Yes"",
+  ""Reason_for_Image_Context_Contribution"": ""The image descriptions provided additional information about the appearance of the customer and agent, which can be useful in verifying their identities and ensuring the authenticity of the KYC process.""
+}"

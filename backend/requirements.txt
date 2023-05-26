@@ -1,0 +1,14 @@
+openai
+opencv-python
+pandas
+numpy
+tqdm
+transformers
+torch
+pillow
+scikit-learn
+fer
+moviepy
+tensorflow
+speechbrain
+librosa
