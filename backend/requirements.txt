@@ -1,3 +1,5 @@
+# we used the latest python 3.11 and ubuntu 22.04
+
 openai
 opencv-python
 pandas

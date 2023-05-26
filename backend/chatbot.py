@@ -1,8 +1,8 @@
-"""This is the main file
+"""This file is a chatbot 
 
 This file takes uses the other modules like check_video_quality.py, emotion_video_detection.py, 
 emotion_detection_audio.py,image_to_text.py to analyze the video and audio and then we use those features and 
-prompt to the ChatGPT to get analytics
+prompt to the ChatGPT to get analytics.
  
 """
 
@@ -212,30 +212,42 @@ Use this information to answer  the questions that were asked. Don't give analyt
 
 chat = ChatGPT(api_key)
 
-short_summary=chat.ask(f"The given text is the conversation between KYC Agent and the customer.write a short summary in bullet points on {conversations}")
 
-all_category_outputs=dict()
-all_category_outputs['Short_Summary']=dict()
-all_category_outputs['Short_Summary']["short_summary"]=short_summary
+################################## PLAYGROUND FOR MORE EXPERMENTATION ##################################################################
+###############################################################################################################
+###############################################################################################################
+###############################################################################################################
+###############################################################################################################
+###############################################################################################################
+###############################################################################################################
 
-count=0
+#################### This is the code for the chatbot ###########################################################
+#################### Ask any question which is related to  the conversation between agent and customer #########
 
-for category in tqdm(questions.keys()):
-    print(category)
-    #  here we are asking ChatGPT the analytics by giving all the features that we derived
-    ask_prompt = questions_to_prompt({category:questions[category]}, image_summary_customer, image_summary_agent, analytics_prompt)
+def chatbot(question, image_description_agent,image_description_customer, analytics):
+    prompt = ""
+    prompt += f"For the following KYC verification conversation and corresponding image descriptions (provided every 5 seconds) between an agent and a customer, if possible,please provide the following information in a JSON format:\n\n"
+    prompt+=question
+    prompt += f"The conversation is delimited by triple backticks in the format ```{conversations}```.\n\n"
+    prompt += f"The image descriptions are provided for agent as follows: ```{image_description_agent}```. Note that these descriptions are given for every few seconds of the video.\n\n"
+    prompt += f"The image descriptions are provided for customer as follows: ```{image_description_customer}```. Note that these descriptions are given for every few seconds of the video.\n\n"
+    prompt += f"{analytics}.\n\n"
     chat = ChatGPT(api_key)
-    output=chat.ask(ask_prompt)
-    all_category_outputs[category]=output
-    sleep(20) #### This is to avoid the limit error from the ChatGPT API 
-    
+    answer = chat.ask(prompt)
+    return answer
 
-pd.DataFrame(all_category_outputs).T
+if __name__ == "__main__":
+    # These are the example questions that you can ask 
+    your_question=""" What is the color of the shirt that the person wore in the video?"""
+    your_question= """what is the customer gender? """
+    your_question= """what is the customer age? and why did you gave that age ?  """
+    your_question= """is the customer wearing a mask?"""
+    your_question=""" give me the short summary of the conversation?"""
+    your_question="""Did the image descriptions suggest any technical issues (e.g., poor lighting, low video quality) that may have affected the conversation? ('Yes'/'No')"""
 
-df = pd.DataFrame(all_category_outputs).transpose()
+    your_question="""How was the agent behaviour towards the customer?"""
 
-df.index.name = 'Category of the Question'
-df["Question"]=questions
-df.columns.name = None
 
-df.to_csv('Final_output.csv')   
+    your_question="""Is there any third party interference? First tell me the reason and then tell me the answer"""
+    answer=chatbot(your_question, image_summary_customer, image_summary_agent, analytics_prompt)
+    print(answer)
