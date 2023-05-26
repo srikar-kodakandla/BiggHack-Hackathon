@@ -6,7 +6,21 @@ The model is a vision encoder decoder model
 The model is trained to generate the caption for the image
 
 """
+"""
+This script uses the VisionEncoderDecoderModel from the transformers library to generate video summaries based on image captions.
+It utilizes the ViTImageProcessor and AutoTokenizer modules for image processing and tokenization.
+The generated video summaries are based on the provided pre-trained model 'nlpconnect/vit-gpt2-image-captioning'.
 
+
+Usage:
+1. Make sure you have the required libraries installed.
+2. Provide the path to the video you want to generate a summary for in the 'generate_video_summary' function.
+3. Adjust the 'max_length' and 'num_beams' parameters according to your preferences.
+4. Run the script.
+
+Note: The script assumes that you have a CUDA-compatible GPU for faster processing. If not, it will fall back to CPU.
+
+"""
 
 from transformers import VisionEncoderDecoderModel, ViTImageProcessor, AutoTokenizer
 import torch
