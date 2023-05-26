@@ -5,9 +5,29 @@ The video is divided in to 10 chunks
 The emotions are detected for every chunk and the dominant emotion is taken for every chunk
 The emotions are plotted for the whole video and for each chunk of the video and saved in 'data' directory
 The video input is first converted to frames and then decreased it's quality to 480x360 for faster processing
+"""
+    
 
+"""
+Video Emotion Analysis
 
-    """
+This script performs emotion analysis on a video file using the FER (Facial Emotion Recognition) library. It extracts frames from the video, detects faces in the frames, and then uses FER to identify the dominant emotion in each face. The script also counts the number of people in each frame. The results are then processed and returned in a dictionary format.
+
+Functions:
+
+get_video_frames(video_path): Extracts frames from the video file at a rate of one frame every half second. Returns a dictionary where the keys are timestamps and the values are the frames.
+
+get_features(video_name, split_time=10): Performs the main analysis. It splits the video into segments based on the split_time parameter, detects faces and emotions in each segment, counts the number of people in each segment, and then processes the results. Returns a dictionary with the following keys:
+
+'score_comparisons': A DataFrame with the total emotion scores for each emotion.
+'final_emotion': A dictionary where the keys are timestamps and the values are the most common emotions in each segment.
+'people_count': A dictionary where the keys are timestamps and the values are the maximum number of people detected in each segment.
+'vid_df': A DataFrame with the emotion scores for each frame.
+get_video_length(video_path): Returns the duration of the video in seconds.
+
+main_function(video_name): The main function that should be called to perform the analysis. It first calculates the split_time by dividing the video length by 10, and then calls get_features() with this split_time.
+
+"""
 
 import cv2
 import os
